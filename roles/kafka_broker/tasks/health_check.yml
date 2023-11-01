@@ -43,6 +43,7 @@
     url_username: "{{mds_health_check_user}}"
     url_password: "{{mds_health_check_password}}"
     force_basic_auth: true
+    use_proxy: "{{ use_proxy_in_health_checks | default(omit) }}"
   register: mds_result
   until: mds_result.status == 200
   retries: "{{ mds_retries }}"
@@ -62,6 +63,7 @@
     url_username: "{{kafka_broker_rest_health_check_user}}"
     url_password: "{{kafka_broker_rest_health_check_password}}"
     force_basic_auth: true
+    use_proxy: "{{ use_proxy_in_health_checks | default(omit) }}"
   register: erp_result
   until: erp_result.status == 200
   retries: "{{ mds_retries }}"
