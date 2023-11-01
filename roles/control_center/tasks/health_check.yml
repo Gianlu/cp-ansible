@@ -9,6 +9,7 @@
     url_username: "{{control_center_health_check_user}}"
     url_password: "{{control_center_health_check_password}}"
     force_basic_auth: true
+    use_proxy: "{{ use_proxy_in_health_checks | default(omit) }}"
   register: result1
   until: result1.status == 200
   retries: 40
